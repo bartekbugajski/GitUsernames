@@ -38,7 +38,7 @@
 
 - (void)fetchUsersUsingJSON {
     NSLog(@"Fetching usernames");
-    NSString *urlString = @"https://api.letsbuildthatapp.com/jsondecodable/courses";
+    NSString *urlString = @"https://api.github.com/users?since=135";
     NSURL *url = [NSURL URLWithString:urlString];
     [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"Usernames fetching finished.");
@@ -54,12 +54,12 @@
         NSMutableArray<User *> *usernames = NSMutableArray.new;
         for (NSDictionary *usersDictionary in usersJSON) {
             NSString *name = usersDictionary[@"name"];
-           // NSString *avatar = usersDictionary[@"avatar_url"];
-            //NSString *id = usersDictionary[@"id"];
+            NSString *avatar = usersDictionary[@"avatar_url"];
+            NSString *id = usersDictionary[@"id"];
             User *username = User.new;
             username.name = name;
-            //username.avatar = avatar;
-            //username.id = id;
+            username.avatar = avatar;
+            username.id = id;
             [usernames addObject:username];
         
         }
@@ -88,8 +88,8 @@
     User *username = self.usernames[indexPath.row];
     
     cell.textLabel.text = username.name;
-    //cell.detailTextLabel.text = username.avatar;
-    //cell.detailTextLabel.text = username.id;
+    cell.detailTextLabel.text = username.avatar;
+    cell.detailTextLabel.text = username.id;
 
     return cell;
 }
