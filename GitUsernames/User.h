@@ -10,9 +10,9 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *avatar;
-@property (strong, nonatomic) NSString *id;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSURL *avatar;
+@property (nonatomic) NSNumber *id;
 
 
 @end
