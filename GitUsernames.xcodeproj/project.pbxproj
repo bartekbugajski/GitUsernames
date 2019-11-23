@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E370B46623894EB500820E0B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E370B46523894EB500820E0B /* User.m */; };
 		E39B6C852386D03300A3FAC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E39B6C842386D03300A3FAC9 /* AppDelegate.m */; };
 		E39B6C882386D03300A3FAC9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E39B6C872386D03300A3FAC9 /* SceneDelegate.m */; };
 		E39B6C8B2386D03300A3FAC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E39B6C8A2386D03300A3FAC9 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E370B46523894EB500820E0B /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E370B46723894EBF00820E0B /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E39B6C802386D03300A3FAC9 /* GitUsernames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitUsernames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39B6C832386D03300A3FAC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E39B6C842386D03300A3FAC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +73,8 @@
 				E39B6C892386D03300A3FAC9 /* ViewController.h */,
 				E39B6C8A2386D03300A3FAC9 /* ViewController.m */,
 				E39B6C8C2386D03300A3FAC9 /* Main.storyboard */,
+				E370B46523894EB500820E0B /* User.m */,
+				E370B46723894EBF00820E0B /* User.h */,
 				E39B6C922386D04000A3FAC9 /* Assets.xcassets */,
 				E39B6C942386D04000A3FAC9 /* LaunchScreen.storyboard */,
 				E39B6C972386D04000A3FAC9 /* Info.plist */,
@@ -151,6 +156,7 @@
 			files = (
 				E39B6C992386D04000A3FAC9 /* main.m in Sources */,
 				E39B6C912386D03400A3FAC9 /* GitUsernames.xcdatamodeld in Sources */,
+				E370B46623894EB500820E0B /* User.m in Sources */,
 				E39B6C8B2386D03300A3FAC9 /* ViewController.m in Sources */,
 				E39B6C852386D03300A3FAC9 /* AppDelegate.m in Sources */,
 				E39B6C882386D03300A3FAC9 /* SceneDelegate.m in Sources */,
