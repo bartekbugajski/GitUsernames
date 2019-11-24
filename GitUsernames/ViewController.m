@@ -161,7 +161,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView; {
-    return 2;
+    return 1;
 }
 
 -(UIImage *)makeRoundedImage:(UIImage *) image
@@ -186,24 +186,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cell";
     
-    //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellId];
-   // UITableViewCell *cell = [[UITableViewCell alloc]
-       //         initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    
-    UITableViewCell *cell = [[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
-    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellId];
+
     User *username = self.usernames[indexPath.row];
     
     NSData *imageData = [NSData dataWithContentsOfURL:username.avatar];
-    
-    //UIImageView *avatarImage = self.imageView.image;
     UIImage *avatarImage = [UIImage imageWithData:imageData];
     
 
     NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
     imageAttachment.image = avatarImage;
-    //CGFloat imageOffsetY = -5.0;
-//    imageAttachment.bounds = CGRectMake(0, imageOffsetY, imageAttachment.image.size.width = 50, imageAttachment.image.size.height);
     imageAttachment.bounds = CGRectMake(10, -6, 30, 30);
     
     
@@ -237,66 +229,43 @@
 
  - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSMutableArray *searchResults = [[NSMutableArray alloc] init];
-    
-//     [self fetchUsersUsingJSON];
 //     // update the filtered array based on the search text
-     
-     
 NSString *searchText = searchController.searchBar.text;
-     
      NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/search/users?q=tom%@",searchText]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSLog(@"connection test marker");
             NSLog(@"%@", [NSArray arrayWithArray:json[@"items:login"]]);
             //_suggestionArray = [NSArray arrayWithArray:[NSArray arrayWithArray:json[@"responseData"][@"results"]]];
-            
-             dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                       [self.tableView reloadData];
                   });
         }];
-
         [dataTask resume];
-     
      
  NSMutableArray<User *> *usernames = NSMutableArray.new;
              for (NSDictionary *usersDictionary in usernames) {
                  NSString *name = usersDictionary[@"items:login"];
-                 //NSURL *avatar =[NSURL URLWithString:[usersDictionary objectForKey:@"avatar_url"]];
-                 //NSNumber *id = usersDictionary[@"id"];
                  User *username = User.new;
                  username.name = name;
                  //username.avatar = avatar;
                  //username.id = id;
                  [usernames addObject:username];
-
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [fetch.sections objectAtIndex:0];
-  //   id <NSFetchedResultsSectionInfo> sectionInfo = [self fetchUsersUsingJSON.searchResults];
-
      if (searchText == nil) {
-
          // If empty the search results are the same as the original data
          searchResults = [self.usernames mutableCopy];
-
      } else {
-         
-        
-         
          NSArray *usernames = self.usernames;
          for (User *userMO in usernames) {
-
              if ([userMO.name containsString:searchText]) {
                  [searchResults addObject:userMO];
              }
          }
        self.searchResults = searchResults;
-
      }
-
      // hand over the filtered results to our search results table
    UITableViewController *tableController = (UITableViewController *)self.searchController.searchResultsController;
    //tableController.usernames = usernames;
-     
    [tableController.tableView reloadData];
  }
  }
@@ -315,7 +284,7 @@ NSString *searchText = searchController.searchBar.text;
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/search/users?q=tom%@",searchText]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSLog(@"connection test marker");
-        NSLog(@"%@", [NSArray arrayWithArray:json[@"items:login[0]"]]);
+        NSLog(@"%@", [NSArray arrayWithArray:json[@"login"]]);
         //_suggestionArray = [NSArray arrayWithArray:[NSArray arrayWithArray:json[@"responseData"][@"results"]]];
           dispatch_async(dispatch_get_main_queue(), ^{
                   [self.tableView reloadData];

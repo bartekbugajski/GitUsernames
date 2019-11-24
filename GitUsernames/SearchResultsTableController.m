@@ -49,7 +49,7 @@ return self;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-return self.usernames.count;
+return 10;
 }
 
 
@@ -78,9 +78,9 @@ return self.usernames.count;
     NSMutableAttributedString *textAfterIcon= [[NSMutableAttributedString alloc] initWithString:@""];
     [completeText appendAttributedString:textAfterIcon];
     
-    cell.textLabel.text = username.name;
+    cell.textLabel.text = @"hello m@t@";
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.attributedText = completeText;
+//    cell.textLabel.attributedText = completeText;
     
 
     return cell;
